@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chord Recognition</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body>
+    <h1>Chord Recognition</h1>
+    
+
+    <div id="chord-display">
+        <p id="chordName">Press "Generate Chord" to begin.</p>
+        <p id="chordNotes"></p>
+    </div>
+    <button id="generate-button" onclick="generateChords()">Generate Chord</button>
+    <button id="record-button" onclick="startRecording()">Start Recording</button>
+    <div id="progress-bar" style="background-color: blue; height: 20px; width: 80px;"></div>
+    <div id="recording-status" class="not-recording">Not Recording</div>
+    <div id="result-display">
+        <p>Results will appear here.</p>
+    </div>
+    <div id="recognized-notes"></div>
+    <div id="score-display"></div>
+    <script src="app.js"></script>
+    
+    <div class="slidecontainer">
+    <label for="chordNum">Number of Chords:</label><br>
+    <input type="range" min="1" max="10" value="1" class="slider" id="chordNum">
+    <p>Value: <span id="sliderVal"></span></p>
+    <input type="range" min="15" max="90" value="60" class="slider" id="bpmSlider">
+    <span id="bpmDisplay">60</span> bpm
+    <div class="chord-container">
+        <p>Choose Chords:</p>
+        <div><input type="checkbox" id="major" name="chords" value="Major" checked><label for="major">Major</label></div>
+        <div><input type="checkbox" id="minor" name="chords" value="Minor" checked><label for="minor">Minor</label></div>
+        <div><input type="checkbox" id="diminished" name="chords" value="Diminished"><label for="diminished">Diminished</label></div>
+        <div><input type="checkbox" id="augmented" name="chords" value="Augmented"><label for="augmented">Augmented</label></div>
+        <div><input type="checkbox" id="sus2" name="chords" value="Suspended 2nd"><label for="sus2">Suspended 2nd</label></div>
+        <div><input type="checkbox" id="sus4" name="chords" value="Suspended 4th"><label for="sus4">Suspended 4th</label></div>
+        <div><input type="checkbox" id="maj7" name="chords" value="Major 7th"><label for="maj7">Major 7th</label></div>
+        <div><input type="checkbox" id="min7" name="chords" value="Minor 7th"><label for="min7">Minor 7th</label></div>
+        <div><input type="checkbox" id="dom7" name="chords" value="Dominant 7th"><label for="dom7">Dominant 7th</label></div>
+        <div><input type="checkbox" id="dim7" name="chords" value="Diminished 7th"><label for="dim7">Diminished 7th</label></div>
+        <div><input type="checkbox" id="hdim7" name="chords" value="Half-Diminished 7th"><label for="hdim7">Half-Diminished 7th</label></div>
+        <div><input type="checkbox" id="minmaj7" name="chords" value="Minor Major 7th"><label for="minmaj7">Minor Major 7th</label></div>
+        <div><input type="checkbox" id="augmaj7" name="chords" value="Augmented Major 7th"><label for="augmaj7">Augmented Major 7th</label></div>
+        <div><input type="checkbox" id="aug7" name="chords" value="Augmented 7th"><label for="aug7">Augmented 7th</label></div>
+    </div>
+    
+</div>
+
+
+
+<script>
+    var slider = document.getElementById("chordNum");
+    var output = document.getElementById("sliderVal");
+    output.innerHTML = slider.value; // Display the default slider value
+
+    // Update the current slider value (each time you drag the slider handle)
+    slider.oninput = function() {
+        output.innerHTML = this.value;
+    }
+    
+</script>
+<script>
+    document.getElementById("bpmSlider").oninput = function() {
+        document.getElementById("bpmDisplay").innerHTML = this.value;
+    }
+</script>
+</body>
+</html> 

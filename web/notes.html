@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Note Recognition</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <h1>Note Recognition</h1>
+    
+
+    <div id="chord-display">
+        <p id="chordName">Press "Generate Notes" to begin.</p>
+        <p id="chordNotes"></p>
+    </div>
+    <button id="generate-button" onclick="generateChords()">Generate Note</button>
+    <button id="record-button" onclick="startRecording()">Start Recording</button>
+    <div id="progress-bar" style="background-color: blue; height: 20px; width: 80px;"></div>
+    <div id="recording-status" class="not-recording">Not Recording</div>
+    <div id="result-display">
+        <p>Results will appear here.</p>
+    </div>
+    <div id="recognized-notes"></div>
+    <div id="score-display"></div>
+    <script src="app.js"></script>
+    
+    <div class="slidecontainer">
+    <label for="chordNum">Number of Notes:</label><br>
+    <input type="range" min="1" max="15" value="1" class="slider" id="chordNum">
+    <p>Value: <span id="sliderVal"></span></p>
+    <input type="range" min="15" max="90" value="60" class="slider" id="bpmSlider">
+    <span id="bpmDisplay">60</span> bpm
+</div>
+
+
+
+<script>
+    var slider = document.getElementById("chordNum");
+    var output = document.getElementById("sliderVal");
+    output.innerHTML = slider.value; // Display the default slider value
+
+    // Update the current slider value (each time you drag the slider handle)
+    slider.oninput = function() {
+        output.innerHTML = this.value;
+    }
+    
+</script>
+<script>
+    document.getElementById("bpmSlider").oninput = function() {
+        document.getElementById("bpmDisplay").innerHTML = this.value;
+    }
+</script>
+</body>
+</html> 
